@@ -28,11 +28,11 @@ public class UserController {
 
     @GetMapping("/api/user/{id}")
     public ResponseEntity<User> getUser(@PathVariable Long id) {
-        User user = userServiceImpl.featchUser(id);
-        if(user == null){
-            return ResponseEntity.notFound().build();
-        }
-        return ResponseEntity.ok(userServiceImpl.featchUser(id));
+        return userServiceImpl.featchUser(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+
+
     }
 
     @PostMapping("/api/user")
