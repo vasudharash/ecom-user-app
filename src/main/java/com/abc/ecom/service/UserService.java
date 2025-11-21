@@ -8,4 +8,5 @@ public interface UserService {
 
     List<User> featchAllUser();
     List<User> addUser(User user);
+    User featchUser(Long Id);
 }

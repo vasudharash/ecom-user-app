@@ -17,8 +17,13 @@ public class UserController {
     UserServiceImpl userServiceImpl;
 
     @GetMapping("/api/user")
-    public List<User> getUser() {
+    public List<User> getListOfUsers() {
         return userServiceImpl.featchAllUser();
+    }
+
+    @GetMapping("/api/user/{id}")
+    public User getUser(@PathVariable Long id) {
+        return userServiceImpl.featchUser(id);
     }
 
     @PostMapping("/api/user")
